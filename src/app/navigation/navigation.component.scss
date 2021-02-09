@@ -1,0 +1,26 @@
+.sidenav-container {
+  .contents {
+    color: rgba(0, 0, 0, 0.87);
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #fafafa;
+    min-width: 180px;
+  }
+  .logo-container {
+    padding: 20px 15px;
+    .logo {
+      width: 100px;
+      height: auto;
+    }
+  }
+  .nav-list {
+    padding: 10px 0;
+    text-align: center;
+  }
+  .active {
+    background: rgba(63, 81, 181, 0.15);
+    color: #3f51b5;
+  }
+  .side-content {
+      padding: 30px;
+  }
+}

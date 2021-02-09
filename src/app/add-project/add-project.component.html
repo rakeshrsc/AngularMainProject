@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Add a new project</h1>
+<div mat-dialog-content>
+    <form #addProjectForm="ngForm">
+        <p>
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input name="title" matInput [(ngModel)]="data.title" required #title="ngModel">
+            </mat-form-field>
+            <span *ngIf="title.invalid && (title.dirty || title.touched)">
+                <mat-error *ngIf="title.errors.required">
+                    Title is required
+                </mat-error>
+            </span>
+        </p>
+        <p>
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input [matDatepicker]="startDatePicker" placeholder="mm/dd/yyyy" name="startDate" matInput [(ngModel)]="data.startDate" required #startDate="ngModel">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+            <span *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)">
+                <mat-error *ngIf="startDate.errors.required">
+                    Start Date is required
+                </mat-error>
+            </span>
+        </p>
+        <p>
+            <mat-form-field>
+                <mat-label>End Date</mat-label>
+                <input [matDatepicker]="endDatePicker" placeholder="mm/dd/yyyy" name="endDate" matInput [(ngModel)]="data.endDate" required
+                    #endDate="ngModel">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+            <span *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)">
+                <mat-error *ngIf="endDate.errors.required">
+                    End Date is required
+                </mat-error>
+            </span>
+        </p>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button [disabled]="!addProjectForm.valid"
+        [mat-dialog-close]="{title: data.title, startDate: data.startDate, endDate: data.endDate}"
+        cdkFocusInitial>Create</button>
+</div>

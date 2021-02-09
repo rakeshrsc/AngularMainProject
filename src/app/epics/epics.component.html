@@ -1,0 +1,40 @@
+<mat-toolbar class="tool-bar">
+    <h1>
+        Epics
+    </h1>
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" (click)="saveEpicDetails()">Save</button>
+</mat-toolbar>
+
+<div *ngFor="let projects of projectList; index as i;">
+    <div class="list-items">
+        <div>
+            <span class="title">{{projects?.title}}</span>
+            <button mat-raised-button color="accent" (click)="addNewEpic(i)">
+                <mat-icon>add</mat-icon> Add Epic
+            </button>
+        </div>
+        <mat-list class="epic-form" *ngFor="let epic of projects?.epics; index as idx;">
+            <mat-list-item class="full-width">
+                <mat-form-field class="form-field">
+                    <mat-label>Epic {{idx+1}} Name</mat-label>
+                    <input matInput [(ngModel)]="epic.name">
+                </mat-form-field>
+
+                <mat-form-field class="form-field">
+                    <mat-label>Priority</mat-label>
+                    <mat-select [(ngModel)]="epic.priority">
+                        <mat-option *ngFor="let priority of priorityList" [value]="priority">
+                            {{priority}}
+                        </mat-option>
+                    </mat-select>
+                    <input matInput>
+                </mat-form-field>
+                <button mat-icon-button color="warn" (click)="deleteEpic(i, idx)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <mat-divider></mat-divider>
+</div>

@@ -1,0 +1,12 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened [fixedInViewport]="true" class="contents">
+        <mat-nav-list class="nav-list">
+            <div class="logo-container"><img src="../../assets/logo-placeholder.jpg" class="logo" /></div>
+            <a mat-list-item routerLink="/projects" routerLinkActive="active">Projects</a>
+            <a mat-list-item routerLink="/epics" routerLinkActive="active">Epics</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="side-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
